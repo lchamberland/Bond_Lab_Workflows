@@ -1,7 +1,26 @@
 # Genome assembly Bond Lab protocol 
 
 ## Clean raw reads using illumiprocessor
-
+Assembly                qqAptStep1.NCBI.p_ctg   qqAptStep1.NCBI.a_ctg
+# contigs               3036                    17333
+Largest contig          25992589                17784358
+Total length            3634786791              3919114782
+GC (%)                  40.55                   40.66
+N50                     2589198                 781664
+N75                     1298795                 356880
+L50                     380                     1305
+L75                     876                     3125
+# scaffolds             1198                    13461
+Largest scaffold        58246652                84834143
+Total length            3634971263              3919502458
+GC (%)                  40.55                   40.66
+N50                     12871321                3263039
+N75                     4219297                 878507
+L50                     67                      227
+L75                     183                     812
+# N's per 100 kbp       5.07                    9.89
+~                                                                                              
+~                                                     
 
 ### Set up your contig file 
 Your contig file has 3 sections 
