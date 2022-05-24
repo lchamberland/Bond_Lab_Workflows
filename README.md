@@ -115,21 +115,22 @@ bowtie2 --very-fast-local -x /folder/with/index/files/bowtie2 -1 /clean/read1/fi
 ```
 to loop the command across all reads use 
 ```
-for sample in `ls /media/sample/fastqfiles/*R1.fastq`
+for sample in `ls /media/sample/fastqfiles/*R1.fastq.gz`
 do
 dir="/media/sample/fastqfiles"
 base=$(basename $sample "_R1.fastq")
-bowtie2 -x path_to_my_index -1 ${dir}/${base}_R1.fastq -2 ${dir}/${base}_R2.fastq -S ${dir}/${base}.sam
+bowtie2 -x path_to_my_index -1 ${dir}/${base}_R1.fastq.gz -2 ${dir}/${base}_R2.fastq.gz -S ${dir}/${base}.sam
 done
 ```
-
 ```
 echo "bowtie2 -x path_to_my_index -1 ${dir}/${base}_R1.fastq -2 ${dir}/${base}_R2.fastq -S ${dir}/${base}.sam"
 ```
+take a look at your output
+```
 cat /folder/to/samfile/samfile.sam|less
 ```
-most analyses use BAM files not SAM files- SAM files are human readable. Must convert into Binary Alingment Map (BAM)- NO PROGRAMS WILL WORK WITH SAM FILES
 
+most analyses use BAM files not SAM files- SAM files are human readable. Must convert into Binary Alingment Map (BAM)- NO PROGRAMS WILL WORK WITH SAM FILES
 ```
 samtools view -S -b /folder/to/samfile/samfile.sam > /folder/to/samfile/bamfile.bam
 ```
