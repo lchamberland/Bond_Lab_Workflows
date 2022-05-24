@@ -85,10 +85,10 @@ Illumina/454/IonTorrent paired-end reads longer than ~70bp:
 bwa mem ref.fa read1.fq read2.fq > aln-pe.sam
 ```
 
-#Intall the programs
+# Intall the programs
 _Note: You only need to download these if you are working on locally your computer. You do NOT need to install these if you are runnning the analysis on the UC Davis farm cluster_
 
-###Install Bowtie2 
+### Install Bowtie2 
 type this command into your terminal and hit enter
 ```
 conda install -c bioconda bowtie2
