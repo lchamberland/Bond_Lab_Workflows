@@ -22,11 +22,14 @@
 ###################################################
 module load bowtie2
 
+cd /directory/to/your/genome
+
 ### Index the reference genome
 #Index our reference file into a file that bowtie will understand. The last "bowtie" in the command below is simply a prefix in your name. Make sure you genome is in the directory when you execute the commmand.
 
 bowtie2-build your_reference_genome.fasta bowtie2
 
+### running bowtie2
 bowtie2 --very-fast-local -x /folder/with/index/files/bowtie2 -1 /clean/read1/files_R1.fastq -2 /clean/read1/files_R2.fastq -S /directory/to/samfile/samfile.sam
 
 
