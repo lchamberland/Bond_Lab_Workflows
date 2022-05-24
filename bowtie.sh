@@ -29,4 +29,7 @@ source activate bowtie2
 
 bowtie2-build your_reference_genome.fasta bowtie2
 
+bowtie2 --very-fast-local -x /folder/with/index/files/bowtie2 -1 /clean/read1/files_R1.fastq -2 /clean/read1/files_R2.fastq -S /directory/to/samfile/samfile.sam
+
+
 
