@@ -7,7 +7,7 @@
 #SBATCH --job-name=bowtie
 #SBATCH --nodes=1
 #SBATCH --ntasks=2                               
-#SBATCH --mem=64G                               
+#SBATCH --mem=24G                               
 #SBATCH -N 1
 #SBATCH -n 2
 #SBATCH --cpus-per-task=16
