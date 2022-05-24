@@ -47,8 +47,9 @@ illumiprocessor \
 ```
 
 
+### select your genome assembly (optional)
 
-If your have multiple whole genome assemblies in your folder, look at the metrics text file. This will have statistics for both your contigs and your scaffolds.
+If your have multiple whole genome assemblies in your folder, you'll need to select the 'best' genome to map your reads to. Look at the metrics text file. This will have statistics for both your contigs and your scaffolds.
 
 contigs = number of contigs
 largest contig = longest/most bp
