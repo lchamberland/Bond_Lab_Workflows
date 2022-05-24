@@ -106,30 +106,34 @@ bowtie2-build --help
 
 ### Index the reference genome
 
-Before we map our reads, we need to index our reference file into a set of files that bowtie will understand. Right now _The last "bowtie" in the command below is simply a prefix in your name. Make sure you genome is in the directory when you execute the commmand._
+Before we map our reads, we need to index our reference file into a set of files that bowtie will understand. After running this step you will end up with a directory with a set of files The last "bowtie" in the command below is simply a prefix in your name. Make sure you genome is in the directory when you execute the commmand.
 
 ```
 bowtie2-build your_reference_genome.fasta bowtie2
 ```
-### map to reference 
+### Map to reference 
+_single read pair_
 Here you only need to specify the prefix (-x), not each individual files. -1 are your R1 reads, -2 are your R2 reads -S is the output samfile 
 ```
 bowtie2 --very-fast-local -x /folder/with/index/files/bowtie2 -1 /clean/read1/files_R1.fastq -2 /clean/read1/files_R2.fastq -S /directory/to/samfile/samfile.sam
 ```
-to loop the command across all reads use 
+_to loop the command across all reads use_
+
 ```
 for sample in `ls /media/sample/fastqfiles/*R1.fastq.gz`
 do
 dir="/media/sample/fastqfiles"
-base=$(basename $sample "_R1.fastq")
+base=$(basename $sample "_R1.fastq.gz")
 bowtie2 -x path_to_my_index -1 ${dir}/${base}_R1.fastq.gz -2 ${dir}/${base}_R2.fastq.gz -S ${dir}/${base}.sam
 done
 ```
+**OR use command below (need to test and see which works**
 
 ```
+module load Bowtie2
 
+module load SAMtools
 
- module load GCC/9.3.0 Bowtie2/2.4.1 SAMtools/1.11
 cd /directory/with/samfile/
 
   for f in *_R1_paired.fastq.gz
