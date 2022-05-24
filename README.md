@@ -2,10 +2,10 @@
 
 
 
-## Clean raw reads using illumiprocessor                                       
+# STEP 1: Clean raw reads using illumiprocessor                                       
 
 ### Set up your contig file 
-Your contig file has 3 sections 
+Your contig file has 4 sections 
 1. [adapters] - Universal Adapters - these do not change 
 2. [tag sequences] - barcode for each column and row
 3. [tag map] - unique barcode pair combination for each well
@@ -46,6 +46,7 @@ illumiprocessor \
     --cores 20
 ```
 
+# STEP 2: Map reads to a reference genome
 
 ### select your genome assembly (optional)
 
@@ -60,8 +61,6 @@ N75 = the length of the smallest contig at 75% <br>
 L50 =<br>
 L75 = <br>
 N's per 100 kbp = number of ambiguious bases per 100 kbp - the higher the number the more ambiguities you have <br>
-
-
 ```
 Assembly                qqAptStep1.NCBI.p_ctg   qqAptStep1.NCBI.a_ctg
  contigs               3036                    17333
@@ -83,27 +82,31 @@ L75                     183                     812
  N's per 100 kbp       5.07                    9.89       
 ```
 
-# Installing the programs
+### Installing the programs (optional)
 _Note: You only need to download these if you are working on locally your computer. You do NOT need to install these if you are runnning the analysis on the UC Davis farm cluster_
 
-### Install Bowtie2 
-type this command into your terminal and hit enter
+Install Bowtie2<br>
+_type this command into your terminal and hit enter_
 ```
-conda install -c bioconda bowtie2
+conda install -c bioconda bowtie2<br>
 ```
-### Install samtools
+Install samtools
+_type this command into your terminal and hit enter_
 ```
 conda install -c bioconda samtools
 ```
 
-# Bowtie 2 - map reads to a reference genome
+## Bowtie2 - map reads to a reference genome
+
 help and list of commands
 ```
 bowtie2 --help
 bowtie2-build --help
 ```
+
 ### Index the reference genome
-Index our reference file into a file that bowtie will understand. The last "bowtie" in the command below is simply a prefix in your name. Make sure you genome is in the directory when you execute the commmand.
+
+Before we map our reads, we need to index our reference file into a set of files that bowtie will understand. Right now _The last "bowtie" in the command below is simply a prefix in your name. Make sure you genome is in the directory when you execute the commmand._
 
 ```
 bowtie2-build your_reference_genome.fasta bowtie2
