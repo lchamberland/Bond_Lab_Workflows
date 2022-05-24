@@ -1,16 +1,14 @@
-# CCGP_aptostichus
-10x genomics assembly
+# Genome assembly Bond Lab protocol 
+
+## Clean raw reads using illumiprocessor
 
 
-```
-ragtag.py scaffold -f 1200 -t 10 ref/YBT-1520.fasta output_dir/ZZQ-130.fasta.
-```
-DOI : https://doi.org/10.1128/mra.00887-21
-
-
-cats :https://doi.org/10.1093/jhered/esaa057
-
-Universal Adapters - these do not change 
+### Set up your contig file 
+Your contig file has 3 sections 
+1. [adapters] - Universal Adapters - these do not change 
+2. [tag sequences] - barcode for each column and row
+3. [tag map] - unique barcode pair combination for each well
+4. [names] - link your barcode pair combos to your specimen ID
 
 ```
 [adapters]
@@ -85,7 +83,7 @@ Illumina/454/IonTorrent paired-end reads longer than ~70bp:
 bwa mem ref.fa read1.fq read2.fq > aln-pe.sam
 ```
 
-# Intall the programs
+# Istalling the programs
 _Note: You only need to download these if you are working on locally your computer. You do NOT need to install these if you are runnning the analysis on the UC Davis farm cluster_
 
 ### Install Bowtie2 
@@ -93,4 +91,32 @@ type this command into your terminal and hit enter
 ```
 conda install -c bioconda bowtie2
 ```
+### Install samtools
+
+```
+conda install -c bioconda samtools
+```
+
+## Using Bowtie 2
+help and list of commands
+```
+bowtie2 --help
+bowtie2-build --help
+```
+### Index the reference genome
+Index our reference file into a file that bowtie will understand. The last "bowtie" in the command below is simply a prefix in your name. Make sure you genome is in the directory when you execute the commmand.
+
+```
+bowtie2-build your_reference_genome.fasta bowtie2
+```
+###
+you only need to specify the prefix, not each individual files. 
+```
+bowtie2 --very-fast-local -x /folder/with/index/files/bowtie2 -1 /clean/read1/files_R1.fastq -2 /clean/read1/files_R2.fastq -S /directory/to/output/sam/errorfile.sam
+```
+cat /folder/to/samfile.sam|less
+```
+most analyses use BAM files not SAM files- SAM files are human readable. Must convert into Binary Alingment Map (BAM)
+
+
 
