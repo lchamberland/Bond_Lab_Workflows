@@ -25,35 +25,19 @@ tag map
 
 ```
 
+### Run illumprocessor 
+illumiprocessor can take a while if you are working with low coverage 10X data
 
 ```
-#!/bin/bash
+#!/bin/bash       
 
-#note: to enter phyluce environment: module load phyluce, then source activate $
-#to exit: source deactivate
-# doesn't like # within command blocks
-
-#SBATCH --job-name=P002-name
-#SBATCH --nodes=1
-#SBATCH --ntasks=2                               
-#SBATCH --mem=64G                               
-#SBATCH -N 1
-#SBATCH -n 2
-#SBATCH --cpus-per-task=16
-#SBATCH --time=2-20:00                          
-#SBATCH --partition=high2                           
-#SBATCH --reservation=                           
-#SBATCH --output=phyluce-%N-%j.out               
-#SBATCH --error=phyluce-%N-%j.err                
-#SBATCH --mail-type=ALL                          
-#SBATCH --mail-user=lchamberland@ucdavis.edu        
+[INSERT YOUR SLURM SCRIPT BATCH BLOCK HERE - you can copy from earlier script]
 
 module load phyluce/1.7.1
 
 source activate phyluce
-#conda deactivate
 
-cd yourdirectory
+cd /directory/to/your/working/folder
 
 illumiprocessor \
     --input raw-reads/ \
