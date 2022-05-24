@@ -48,22 +48,6 @@ tag map
 #SBATCH --mail-type=ALL                          
 #SBATCH --mail-user=lchamberland@ucdavis.edu        
 
-
-#might need to include this if running not with module, not sure
-#OMPI_MCA_opal_cuda_support=true
-
-
-# To activate this environment, use
-#
-#  $ conda activate phyluce-1.7.0
-#
-# To deactivate an active environment, use
-#
-#     $ conda deactivate
-
-
-#module load phyluce/1.6.8
-#module load phyluce
 module load phyluce/1.7.1
 
 source activate phyluce
