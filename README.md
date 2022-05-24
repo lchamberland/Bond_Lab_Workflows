@@ -143,11 +143,10 @@ done
 ```
 
 ```
- INPUT_DIRECTORY=/mnt/home/vascokar/mastitis_study/trimmed
+
 
  module load GCC/9.3.0 Bowtie2/2.4.1 SAMtools/1.11
-
- cd $INPUT_DIRECTORY
+cd /directory/with/samfile/
 
   for f in *_R1_paired.fastq.gz
   do
