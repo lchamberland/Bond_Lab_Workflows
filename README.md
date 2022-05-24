@@ -112,11 +112,19 @@ bowtie2-build your_reference_genome.fasta bowtie2
 ###
 you only need to specify the prefix, not each individual files. 
 ```
-bowtie2 --very-fast-local -x /folder/with/index/files/bowtie2 -1 /clean/read1/files_R1.fastq -2 /clean/read1/files_R2.fastq -S /directory/to/output/sam/errorfile.sam
+bowtie2 --very-fast-local -x /folder/with/index/files/bowtie2 -1 /clean/read1/files_R1.fastq -2 /clean/read1/files_R2.fastq -S /directory/to/samfile/samfile.sam
 ```
-cat /folder/to/samfile.sam|less
+cat /folder/to/samfile/samfile.sam|less
 ```
-most analyses use BAM files not SAM files- SAM files are human readable. Must convert into Binary Alingment Map (BAM)
+most analyses use BAM files not SAM files- SAM files are human readable. Must convert into Binary Alingment Map (BAM)- NO PROGRAMS WILL WORK WITH SAM FILES
 
+```
+samtools view -S -b /folder/to/samfile/samfile.sam > /folder/to/samfile/bamfile.bam
+```
+-b specifies you want bAMfile output
 
+```
+cat /folder/to/samfile/bamfile.bam|less
+cat /folder/to/samfile/samfile.sam|less
+```
 
