@@ -22,8 +22,6 @@
 ###################################################
 module load bowtie2
 
-source activate bowtie2
-###################################################
 ### Index the reference genome
 #Index our reference file into a file that bowtie will understand. The last "bowtie" in the command below is simply a prefix in your name. Make sure you genome is in the directory when you execute the commmand.
 
