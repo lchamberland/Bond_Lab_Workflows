@@ -26,7 +26,7 @@ tag map
 ```
 
 ### Run illumprocessor 
-illumiprocessor can take a while if you are working with low coverage 10X data
+illumiprocessor can take a while if you are working with low coverage 10X data. After illumiprocessor finishes you will have a folder called **clean-reads** which contains cleaned R1.fasta.gz and R2.fasta.gz for all paired ends. 
 
 ```
 #!/bin/bash       
@@ -46,11 +46,7 @@ illumiprocessor \
     --cores 20
 ```
 
-Illumina/454/IonTorrent paired-end reads longer than ~70bp:
 
-```
-bwa mem ref.fa read1.fq read2.fq > aln-pe.sam
-```
 
 If your have multiple whole genome assemblies in your folder, look at the metrics text file. This will have statistics for both your contigs and your scaffolds.
 
