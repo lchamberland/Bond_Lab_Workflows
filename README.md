@@ -51,15 +51,15 @@ illumiprocessor \
 
 If your have multiple whole genome assemblies in your folder, you'll need to select the 'best' genome to map your reads to. Look at the metrics text file. This will have statistics for both your contigs and your scaffolds.
 
-contigs = number of contigs
-largest contig = longest/most bp
-total legnth = entire length of genome assembly
-GC (%) = quality score?
-N50 = the length of the smallest contig at 50% 
-N75 = the length of the smallest contig at 75% 
-L50 =
-L75 = 
-N's per 100 kbp = number of ambiguious bases per 100 kbp - the higher the number the more ambiguities you have 
+contigs = number of contigs<br>
+largest contig = longest/most bp<br>
+total legnth = entire length of genome assembly<br>
+GC (%) = quality score?<br>
+N50 = the length of the smallest contig at 50% <br>
+N75 = the length of the smallest contig at 75% <br>
+L50 =<br>
+L75 = <br>
+N's per 100 kbp = number of ambiguious bases per 100 kbp - the higher the number the more ambiguities you have <br>
 
 
 ```
