@@ -83,7 +83,7 @@ Illumina/454/IonTorrent paired-end reads longer than ~70bp:
 bwa mem ref.fa read1.fq read2.fq > aln-pe.sam
 ```
 
-# Istalling the programs
+# Installing the programs
 _Note: You only need to download these if you are working on locally your computer. You do NOT need to install these if you are runnning the analysis on the UC Davis farm cluster_
 
 ### Install Bowtie2 
@@ -92,12 +92,11 @@ type this command into your terminal and hit enter
 conda install -c bioconda bowtie2
 ```
 ### Install samtools
-
 ```
 conda install -c bioconda samtools
 ```
 
-## Using Bowtie 2
+# Bowtie 2 - map reads to a reference genome
 help and list of commands
 ```
 bowtie2 --help
@@ -109,10 +108,23 @@ Index our reference file into a file that bowtie will understand. The last "bowt
 ```
 bowtie2-build your_reference_genome.fasta bowtie2
 ```
-###
-you only need to specify the prefix, not each individual files. 
+### map to reference 
+Here you only need to specify the prefix (-x), not each individual files. -1 are your R1 reads, -2 are your R2 reads -S is the output samfile 
 ```
 bowtie2 --very-fast-local -x /folder/with/index/files/bowtie2 -1 /clean/read1/files_R1.fastq -2 /clean/read1/files_R2.fastq -S /directory/to/samfile/samfile.sam
+```
+to loop the command across all reads use 
+```
+for sample in `ls /media/sample/fastqfiles/*R1.fastq`
+do
+dir="/media/sample/fastqfiles"
+base=$(basename $sample "_R1.fastq")
+bowtie2 -x path_to_my_index -1 ${dir}/${base}_R1.fastq -2 ${dir}/${base}_R2.fastq -S ${dir}/${base}.sam
+done
+```
+
+```
+echo "bowtie2 -x path_to_my_index -1 ${dir}/${base}_R1.fastq -2 ${dir}/${base}_R2.fastq -S ${dir}/${base}.sam"
 ```
 cat /folder/to/samfile/samfile.sam|less
 ```
