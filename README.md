@@ -127,6 +127,17 @@ base=$(basename $sample "_R1.fastq.gz")
 bowtie2 -x path_to_my_index -1 ${dir}/${base}_R1.fastq.gz -2 ${dir}/${base}_R2.fastq.gz -S ${dir}/${base}.sam
 done
 ```
+
+```
+for sample in `ls /media/sample/fastqfiles/*R1.fastq.gz`
+do
+dir="/directory/to/cleanreads/$i/split-adapter-quality-trimmed"
+base=$(basename $sample "-READ1.fastq.gz")
+bowtie2 -x path_to_my_index -1 ${dir}/${base}-READ1.fastq.gz -2 ${dir}/${base}-READ2.fastq.gz -S ${dir}/${base}.sam
+done
+```
+
+
 **OR use command below (need to test and see which works**
 
 ```
