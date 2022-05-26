@@ -6,7 +6,8 @@ vim yourpartitionfile.charsets
 ```
 
 once you're in editing mode in the file
-1. delete the first line and last two lines using the command dd to delete a single line
+1. delete the first two lines (blank line and begin characters) and last two lines (charsets and END) using the command dd to delete a single line 
+
 ```
 dd
 ```
