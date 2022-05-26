@@ -1,4 +1,3 @@
-
 You need to edit your partition file (.charsets file) to get it into RAXML format format. 
 
 ```
