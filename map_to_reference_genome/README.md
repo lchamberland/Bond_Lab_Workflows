@@ -3,7 +3,7 @@ Here we are mapping low-coverage pair-end 10x genomic reads to a reference genom
 
 ## Table of contents
 1. [Clean reads](#cleaning)
-2. [Select the 'best genome assembly' OPTIONAL](#choosegenome)
+2. [Select the reference genome assembly OPTIONAL](#choosegenome)
 3. [Map reads to genome](#mapping)  
     a. [Installing the programs OPTIONAL](#install)<br>
     b. [Index the genome](#index)<br>
