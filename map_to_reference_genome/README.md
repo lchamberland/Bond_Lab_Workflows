@@ -90,7 +90,7 @@ L75                     183                     812
 
 # STEP 3: Map reads to a reference genome <a name="mapping"></a>
 
-### i. Installing the programs (optional) <a name="install"></a>
+### 3a. Installing the programs (optional) <a name="install"></a>
 _Note: You only need to download these if you are working on locally your computer. You do NOT need to install these if you are runnning the analysis on the UC Davis farm cluster_
 
 Install Bowtie2<br>
@@ -110,14 +110,14 @@ bowtie2 --help
 bowtie2-build --help
 ```
 
-### ii. Index the reference genome <a name="index"></a>
+### 3b. Index the reference genome <a name="index"></a>
 
 Before we map our reads, we need to index our reference file into a set of files that bowtie will understand. After running this step you will end up with a directory with a set of files The last "bowtie" in the command below is simply a prefix in your name. Make sure you genome is in the directory when you execute the commmand.
 
 ```
 bowtie2-build your_reference_genome.fasta bowtie2
 ```
-### iii. Map to reference <a name="bowtie"></a>
+### 3c. Map to reference <a name="bowtie"></a>
 
 -x path to your index files. You must include the prefix that you indicated when you generated your prefix files. In this case we used the prefix "bowtie2"<br>
 -l READ1 reads<br>
@@ -146,7 +146,7 @@ take a look at your output
 ```
 cat /folder/to/samfile/samfile.sam|less
 ```
-### iv. Convert SAM files to BAM files <a name="convert"></a>
+### 3d. Convert SAM files to BAM files <a name="convert"></a>
 All downstream analyses use **Binary Alingment Map (BAM)** files not SAM files, so we must convert the SAM files output from Bowtie2 to BAM files. SAM files are human readable, BAM files are in binary code and are not human readable. 
 
 ```
