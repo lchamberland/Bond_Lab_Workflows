@@ -3,10 +3,11 @@ Here we are mapping low-coverage pair-end 10x genomic reads to a reference genom
 
 ## Table of contents
 1. [Clean reads](#cleaning)
-2. [Map reads to genome](#mapping)  
+2. [OPTIONAL Index the genome](#index) 
+3. [Map reads to genome](#mapping)  
     1. [OPTIONAL selecting the 'best genome assembly'](#choosegenome)
     2. [OPTIONAL installing the programs](#install)
-    3. [Index the genome](#index) 
+    3. 
 
 
 # STEP 1: Clean raw reads using illumiprocessor                                       
@@ -52,10 +53,7 @@ illumiprocessor \
     --config illumiprocessor.conf \
     --cores 20
 ```
-
-# STEP 2: Map reads to a reference genome <a name="mapping"></a>
-
-### select your genome assembly (optional) <a name="choosegenome"></a>
+# STEP 2: OPTIONAL select your genome assembly (optional) <a name="choosegenome"></a>
 
 If your have multiple whole genome assemblies in your folder, you'll need to select the 'best' genome to map your reads to. Look at the metrics text file. This will have statistics for both your contigs and your scaffolds.
 
@@ -89,6 +87,8 @@ L75                     183                     812
  N's per 100 kbp       5.07                    9.89       
 ```
 
+# STEP 3: Map reads to a reference genome <a name="mapping"></a>
+
 ### Installing the programs (optional) <a name="install"></a>
 _Note: You only need to download these if you are working on locally your computer. You do NOT need to install these if you are runnning the analysis on the UC Davis farm cluster_
 
@@ -101,9 +101,7 @@ Install samtools
 _type this command into your terminal and hit enter_
 ```
 conda install -c bioconda samtools
-```
-
-## Bowtie2 - map reads to a reference genome
+``~
 
 help and list of commands
 ```
