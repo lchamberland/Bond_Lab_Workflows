@@ -5,10 +5,10 @@ Here we are mapping low-coverage pair-end 10x genomic reads to a reference genom
 1. [Clean reads](#cleaning)
 2. [Select the 'best genome assembly' OPTIONAL](#choosegenome)
 3. [Map reads to genome](#mapping)  
-    a. [Installing the programs OPTIONAL](#install)
-    b. [Index the genome](#index)
-    c. [Run Bowtie2](#bowtie)
-    d. [Convert SAM files to BAM files](#convert)
+    a. [Installing the programs OPTIONAL](#install)<br>
+    b. [Index the genome](#index)<br>
+    c. [Run Bowtie2](#bowtie)<br>
+    d. [Convert SAM files to BAM files](#convert)<br>
 
 
 # STEP 1: Clean raw reads using illumiprocessor                                       
