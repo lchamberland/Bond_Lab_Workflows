@@ -1,6 +1,11 @@
 # Genome assembly Bond Lab protocol 
+Here we are mapping low-coverage pair-end 10x genomic reads to a reference genome. We will end up with **Sequence Alignment Map (SAM)** files- one per specimen. <br>
 
-
+## Overview
+Step 1: clean reads using illumiprocessor
+Step 2:
+# Table of contents
+1. [Map reads to genome](#mapping)
 
 # STEP 1: Clean raw reads using illumiprocessor                                       
 
@@ -46,7 +51,7 @@ illumiprocessor \
     --cores 20
 ```
 
-# STEP 2: Map reads to a reference genome
+# STEP 2: Map reads to a reference genome <a name="mapping"></a>
 
 ### select your genome assembly (optional)
 
