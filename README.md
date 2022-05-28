@@ -111,7 +111,7 @@ bowtie2 --help
 bowtie2-build --help
 ```
 
-### Index the reference genome
+### Index the reference genome <a name="index"></a>
 
 Before we map our reads, we need to index our reference file into a set of files that bowtie will understand. After running this step you will end up with a directory with a set of files The last "bowtie" in the command below is simply a prefix in your name. Make sure you genome is in the directory when you execute the commmand.
 
