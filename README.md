@@ -1,15 +1,17 @@
 # Genome assembly Bond Lab protocol 
 Here we are mapping low-coverage pair-end 10x genomic reads to a reference genome. We will end up with **Sequence Alignment Map (SAM)** files- one per specimen. <br>
 
-## Overview
-Step 1: clean reads using illumiprocessor
-Step 2:
-# Table of contents
-1. [Map reads to genome](#mapping)
+## Table of contents
+1. [Clean reads](#cleaning)
+2. [Map reads to genome](#mapping)  
+    1. [OPTIONAL selecting the 'best genome assembly'](#choosegenome)
+    2. [OPTIONAL installing the programs](#install)
+    3. [Index the genome](#index) 
+
 
 # STEP 1: Clean raw reads using illumiprocessor                                       
 
-### Set up your contig file 
+### Set up your contig file <a name="mapping"></a>
 Your contig file has 4 sections 
 1. [adapters] - Universal Adapters - these do not change 
 2. [tag sequences] - barcode for each column and row
@@ -53,7 +55,7 @@ illumiprocessor \
 
 # STEP 2: Map reads to a reference genome <a name="mapping"></a>
 
-### select your genome assembly (optional)
+### select your genome assembly (optional) <a name="choosegenome"></a>
 
 If your have multiple whole genome assemblies in your folder, you'll need to select the 'best' genome to map your reads to. Look at the metrics text file. This will have statistics for both your contigs and your scaffolds.
 
@@ -87,7 +89,7 @@ L75                     183                     812
  N's per 100 kbp       5.07                    9.89       
 ```
 
-### Installing the programs (optional)
+### Installing the programs (optional) <a name="install"></a>
 _Note: You only need to download these if you are working on locally your computer. You do NOT need to install these if you are runnning the analysis on the UC Davis farm cluster_
 
 Install Bowtie2<br>
@@ -116,18 +118,24 @@ Before we map our reads, we need to index our reference file into a set of files
 ```
 bowtie2-build your_reference_genome.fasta bowtie2
 ```
-### Map to reference 
+### Map to reference
+
+-x path to your index files. You must include the prefix that you indicated when you generated your prefix files. In this case we used the prefix "bowtie2"<br>
+-l READ1 reads<br>
+-2 READ2 reads<br>
+-S output samfile<br>
+
 _single read pair_
-Here you only need to specify the prefix (-x), not each individual files. -1 are your R1 reads, -2 are your R2 reads -S is the output samfile 
+
 ```
 bowtie2 --very-fast-local -x /folder/with/index/files/bowtie2 -1 /clean/read1/files_R1.fastq -2 /clean/read1/files_R2.fastq -S /directory/to/samfile/samfile.sam
 ```
-_to loop the command across all reads use_
-
-
+_to loop the command across all reads use this command_
 
 ```
-for sample in `ls /media/sample/fastqfiles/*cREAD1.fastq.gz`
+cd /dirctory/to/cleanreads/
+
+for sample in `ls /media/sample/fastqfiles/*READ1.fastq.gz`
 do
 dir="/directory/to/cleanreads/$i/split-adapter-quality-trimmed"
 base=$(basename $sample "-READ1.fastq.gz")
@@ -135,36 +143,6 @@ bowtie2 -x path_to_my_index -1 ${dir}/${base}-READ1.fastq.gz -2 ${dir}/${base}-R
 done
 ```
 
-```
-for sample in `ls /media/sample/fastqfiles/*R1.fastq.gz`
-do
-dir="/media/sample/fastqfiles"
-base=$(basename $sample "_R1.fastq.gz")
-bowtie2 -x /directory/to/index/bowtie2 -1 ${dir}/${base}_R1.fastq.gz -2 ${dir}/${base}_R2.fastq.gz -S ${dir}/${base}.sam
-done
-```
-
-**OR use command below (need to test and see which works**
-
-```
-module load Bowtie2
-
-module load SAMtools
-
-cd /directory/with/samfile/
-
-  for f in *_R1_paired.fastq.gz
-  do
- n=${f%%_R1_paired.fastq.gz} 
-
- bowtie2 –-threads 5 -x $INPUT_DIRECTORY/ARS-UCD1.2 -1 $INPUT_DIRECTORY/${n}_R1_paired.fastq.gz -2 $INPUT_DIRECTORY/${n}_R2_paired.fastq.gz -S $INPUT_DIRECTORY/${n}_R1_host_mapped_and_unmapped.sam
- done
- ```
-
-
-```
-echo "bowtie2 -x path_to_my_index -1 ${dir}/${base}_R1.fastq -2 ${dir}/${base}_R2.fastq -S ${dir}/${base}.sam"
-```
 take a look at your output
 ```
 cat /folder/to/samfile/samfile.sam|less
