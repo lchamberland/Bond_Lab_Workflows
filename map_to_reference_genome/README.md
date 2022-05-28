@@ -3,11 +3,12 @@ Here we are mapping low-coverage pair-end 10x genomic reads to a reference genom
 
 ## Table of contents
 1. [Clean reads](#cleaning)
-2. [OPTIONAL Index the genome](#index) 
+2. [Select the 'best genome assembly' OPTIONAL](#choosegenome)
 3. [Map reads to genome](#mapping)  
-    1. [OPTIONAL selecting the 'best genome assembly'](#choosegenome)
-    2. [OPTIONAL installing the programs](#install)
-    3. 
+    1. [Installing the programs OPTIONAL](#install)
+    2. [Index the genome](#index)
+    3. [Run Bowtie2](#bowtie)
+    4. [Convert SAM files to BAM files](#convert)
 
 
 # STEP 1: Clean raw reads using illumiprocessor                                       
@@ -101,7 +102,7 @@ Install samtools
 _type this command into your terminal and hit enter_
 ```
 conda install -c bioconda samtools
-``~
+```
 
 help and list of commands
 ```
@@ -116,7 +117,7 @@ Before we map our reads, we need to index our reference file into a set of files
 ```
 bowtie2-build your_reference_genome.fasta bowtie2
 ```
-### Map to reference
+### Map to reference <a name="bowtie"></a>
 
 -x path to your index files. You must include the prefix that you indicated when you generated your prefix files. In this case we used the prefix "bowtie2"<br>
 -l READ1 reads<br>
@@ -145,8 +146,9 @@ take a look at your output
 ```
 cat /folder/to/samfile/samfile.sam|less
 ```
+### Convert SAM files to BAM files <a name="convert"></a>
+All downstream analyses use **Binary Alingment Map (BAM)** files not SAM files, so we must convert the SAM files output from Bowtie2 to BAM files. SAM files are human readable, BAM files are in binary code and are not human readable. 
 
-most analyses use BAM files not SAM files- SAM files are human readable. Must convert into Binary Alingment Map (BAM)- NO PROGRAMS WILL WORK WITH SAM FILES
 ```
 samtools view -S -b /folder/to/samfile/samfile.sam > /folder/to/samfile/bamfile.bam
 ```
