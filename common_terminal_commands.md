@@ -24,3 +24,8 @@ get number of files current  folder
 ```
 ls | wc -l
 ```
+
+copy files to destination in terminal and monitor progress
+```
+rsync -ah --progress source destination
+```
