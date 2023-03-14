@@ -29,3 +29,8 @@ copy files to destination in terminal and monitor progress
 ```
 rsync -ah --progress source destination
 ```
+
+list file sizes within a folder
+```
+ls -hl
+```
