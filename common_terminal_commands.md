@@ -34,3 +34,8 @@ list file sizes within a folder
 ```
 ls -hl
 ```
+
+folder size
+```
+du -c -h
+```
